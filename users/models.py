@@ -21,7 +21,7 @@ class order(models.Model):
     discount = models.CharField(max_length=100, blank=True)
     date = models.DateTimeField(default=timezone.now)
     username = models.ForeignKey(User, on_delete=models.CASCADE)
-    infos = models.TextField()
+    infos = models.TextField(blank=True)
     followers_price = 4
     likes_price = 2
     price = followers_price*10

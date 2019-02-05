@@ -3,5 +3,5 @@ from . import views
 
 #Url redirection to use the views for specific paths
 urlpatterns = [
-    path('', views.home, name='users-home'),
+    path('', views.neworder, name='users-home'),
 ]
