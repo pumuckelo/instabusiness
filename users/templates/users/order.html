@@ -1,13 +1,13 @@
-  {% extends "users/base.html" %}
-  {%  block content %}
-        <div class="content-section">
-            <h2 class="border-bottom mb-4">Neue Bestellung</h2>
-            <form method="POST">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="save btn btn-default">Bestellen</button>
-            </form>
-        </div>
-  {% endblock content %}
+{% extends "users/base.html" %}
+{%  block content %}
+    <div class="content-section">
+        <h2 class="border-bottom mb-4">Neue Bestellung</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="save btn btn-default">Bestellen</button>
+        </form>
+    </div>
+{% endblock content %}
 
 

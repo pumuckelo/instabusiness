@@ -29,7 +29,7 @@ def register(request):
         if form.is_valid():
             username = form.cleaned_data.get('username')
             messages.success(request, f'Dein Account {username} wurde erstellt')
-            return redirect ('order')
+            return redirect('neworder')
             form.save()
     else:
         form = UserCreationForm()
