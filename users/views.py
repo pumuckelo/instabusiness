@@ -17,15 +17,16 @@ def neworder(request):
 
     else:
         form = orderForm()
-    context = {
-        'orders': order.objects.all()
-    }
-    return render(request, 'users/home.html', {'form': form}, context)
+
+    return render(request, 'users/home.html', {'form': form})
 
 # Function to render the orderhistory.hthml, which will show all orders filtered
 # by username
 def orderhistory(request):
-    return render(request, 'users/orderhistory.html')
+    context = {
+        'orders': order.objects.all()
+    }
+    return render(request, 'users/orderhistory.html', context)
 
 # Function to render about.html
 def about(request):

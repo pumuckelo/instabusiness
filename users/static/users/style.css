@@ -1,0 +1,29 @@
+
+.navbar {
+    text-transform: capitalize !important;
+    background-color: #278af9 !important;
+    color: #000000 !important;
+    border: none !important;
+    border: 0 !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.navbar .navbar-brand {
+    color: #ffffff !important;
+    font-size: 22px !important;
+}
+/*278af9*/
+.navbar .navbar-nav a {
+    text-transform: capitalize !important;
+    color: #ffffff !important;
+    /* font-weight: bold !important; */
+    font-size: 22px !important;
+}
+
+.navbar .navbar-nav a:hover{
+    text-transform: capitalize !important;
+    color: #ffffff !important;
+    font-weight: bold !important;
+}
+

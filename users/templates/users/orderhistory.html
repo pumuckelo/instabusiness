@@ -1,4 +1,27 @@
 {% extends "users/base.html" %}
 {% block content %}
     <h1>Bestellhistorie</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Profil Link</th>
+                <th>Bild Link</th>
+                <th>Follower</th>
+                <th>Likes</th>
+                <th>Datum</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for order in orders %}
+            <tr>
+            <td>{{ order.profile_link }} </td>
+            <td>{{ order.picture_link }} </td>
+            <td>{{ likes_Quantity }} </td>
+            <td>{{ followers_Quantity }} </td>
+            <td>{{ date }} </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock content %}

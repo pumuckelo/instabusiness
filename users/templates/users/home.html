@@ -1,17 +1,13 @@
   {% extends "users/base.html" %}
+
   {%  block content %}
     <!--<h2>Hier soll die Hauptseite fuer die Kunden sein nach dem Login, hier soll ein Menu sein, wo die neue Bestellungen machen koennen, oder ich mache alles auf eine Seite, so dass hier schon die Funktion etc fuer Bestellungen ist</h2> -->
-    <h1></h1>
-        <div class="page-header">
-            <a href="{% url 'users-home' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-            <h1><a href="/">Neue Bestellung</a></h1>
-        </div>
-        <form method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="save btn btn-default">Bestellen</button>
-        </form>
-    {% for order in orders %}
-
-    {% endfor %}
+            <h2>Neue Bestellung</h2>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="save btn btn-default">Bestellen</button>
+            </form>
   {% endblock content %}
+
+
