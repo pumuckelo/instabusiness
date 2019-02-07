@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import orderForm
 from .models import order
 from django.contrib import messages
-from django.contrib.auth.forms import UserCreationForm
+from .forms import UserRegisterForm
 
 # Create your views here.
 #Function for index.html
@@ -18,21 +18,20 @@ def neworder(request):
 
     else:
         form = orderForm()
-
-    return render(request, 'users/order.html', {'form': form})
+        return render(request, 'users/order.html', {'form': form})
 
 
 #Function for Register
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = UserRegisterForm(request.POST)
         if form.is_valid():
+            form.save()
             username = form.cleaned_data.get('username')
             messages.success(request, f'Dein Account {username} wurde erstellt')
             return redirect('neworder')
-            form.save()
     else:
-        form = UserCreationForm()
+        form = UserRegisterForm()
     return render(request, 'users/register.html', {'form': form})
 
 #Function for Login
