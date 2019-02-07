@@ -1,13 +1,13 @@
   {% extends "users/base.html" %}
-
   {%  block content %}
-    <!--<h2>Hier soll die Hauptseite fuer die Kunden sein nach dem Login, hier soll ein Menu sein, wo die neue Bestellungen machen koennen, oder ich mache alles auf eine Seite, so dass hier schon die Funktion etc fuer Bestellungen ist</h2> -->
-            <h2>Neue Bestellung</h2>
+        <div class="content-section">
+            <h2 class="border-bottom mb-4">Neue Bestellung</h2>
             <form method="POST">
                 {% csrf_token %}
                 {{ form.as_p }}
                 <button type="submit" class="save btn btn-default">Bestellen</button>
             </form>
+        </div>
   {% endblock content %}
 
 
