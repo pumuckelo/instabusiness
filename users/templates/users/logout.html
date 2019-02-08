@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends "users/base.html" %}
+{% block content %}
+    <h2>Du wurdest ausgeloggt</h2>
+    <small class="text-muted">
+        <a href="{% url 'login' %}">Erneut einloggen</a>
+    </small>
+{% endblock %}

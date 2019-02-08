@@ -33,16 +33,29 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav ml-auto mr-5">
-                <a class="nav-item nav-link active" href="{% url 'neworder' %}">Neue Bestllung <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="{% url 'orderhistory' %}">Bestellhistorie</a>
-                <a class="nav-item nav-link" href="{% url 'contact' %}">Kontakt</a>
-                <a class="nav-item nav-link" href="{% url 'about' %}">Über uns</a>
-            </div>
-            <div class="navbar-nav ml-auto">
-                <a class="nav-item nav-link" href="{% url 'login' %}">Einloggen</a>
-                <a class="nav-item nav-link" href="{% url 'register' %}">Registrieren</a>
-            </div>
+
+            <!--Navbar Right Side Login/Logout/Register -->
+            {% if user.is_authenticated %}
+                <div class="navbar-nav ml-auto mr-5">
+                    <a class="nav-item nav-link active" href="{% url 'neworder' %}">Neue Bestllung <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link" href="{% url 'orderhistory' %}">Bestellhistorie</a>
+                    <a class="nav-item nav-link" href="{% url 'contact' %}">Kontakt</a>
+                    <a class="nav-item nav-link" href="{% url 'about' %}">Über uns</a>
+                </div>
+                <div class="navbar-nav ml-auto">
+                    <a class="nav-item nav-link" href="{% url 'profile' %}">Profil</a>
+                    <a class="nav-item nav-link" href="{% url 'logout' %}">Ausloggen</a>
+                </div>
+            {% else %}
+                <div class="navbar-nav ml-auto mr-5">
+                    <a class="nav-item nav-link" href="{% url 'contact' %}">Kontakt</a>
+                    <a class="nav-item nav-link" href="{% url 'about' %}">Über uns</a>
+                </div>
+                <div class="navbar-nav ml-auto">
+                    <a class="nav-item nav-link" href="{% url 'login' %}">Einloggen</a>
+                    <a class="nav-item nav-link" href="{% url 'register' %}">Registrieren</a>
+                </div>
+            {% endif %}
         </div>
     </nav>
     <!-- Side Navigation with Menu -->
