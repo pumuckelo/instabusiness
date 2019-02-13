@@ -5,11 +5,26 @@ from django.contrib import messages
 from .forms import UserRegisterForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-
+from django.views.generic import CreateView
+from django.urls import  reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 #Function for index.html
 def index(request):
    return render(request, 'users/index.html')
+
+#Class based view to make a new order
+class new_order_follower(LoginRequiredMixin, CreateView):
+    model = order_follower
+    template_name = 'users/order.html'
+    fields = ['profile_link','follower','discount','infos']
+    success_url = reverse_lazy('orderhistory')
+    def form_valid(self, form):
+        form.instance.username = self.request.user
+        return super().form_valid(form)
+
+#class based view for order history
+
 
 # Function to render order.html with the order form to make new orders
 @login_required
