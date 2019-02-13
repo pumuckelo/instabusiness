@@ -3,12 +3,13 @@ from . import views
 from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import new_order_follower
+from .views import new_order_follower, order_history
 
 #Url redirection to use the views for specific paths
 urlpatterns = [
     path('', views.index, name='index'),
     path('order/', new_order_follower.as_view(), name='neworder'),
+    path('history2/', order_history.as_view(), name='history2'),
     path('history/', views.orderhistory, name='orderhistory'),
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),

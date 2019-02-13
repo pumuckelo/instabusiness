@@ -1,0 +1,29 @@
+{% extends "users/base.html" %}
+{% block content %}
+    <h1>Bestellhistorie</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Profil</th>
+                <th>Follower</th>
+                <th>Datum</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        {% for instance in object_list %}
+            <tbody>
+                    <td> {{ forloop.counter }} </td>
+                    <td>{{ instance.profile_link }} </td>
+                    <td>{{ instance.follower }} </td>
+                    <td>{{ instance.date|date:"G:i, d.m.o" }} </td>
+                    {% if instance.status == 'Erledigt' %}
+                        <td class="table-success">{{ instance.status }}</td>
+                    {% else %}
+                        <td class="table-info">{{ instance.status }}</td>
+                    {% endif %}
+
+            </tbody>
+        {% endfor %}
+    </table>
+{% endblock content %}

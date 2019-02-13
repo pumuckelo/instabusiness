@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 
+
 # Create your models here.
 
 #class for likes incl. price
@@ -31,6 +32,11 @@ class order_follower(models.Model):
     date = models.DateTimeField(default=timezone.now)
     username = models.ForeignKey(User, on_delete=models.CASCADE)
     infos = models.TextField(blank=True)
+    status = models.CharField(max_length = 100, default='In Bearbeitung')
+
+    class Meta:
+        ordering = ["-date"]
+
 
 #Extending User model and add some variables
 class profile(models.Model):

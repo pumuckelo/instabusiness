@@ -5,7 +5,7 @@ from django.contrib import messages
 from .forms import UserRegisterForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.views.generic import CreateView
+from django.views.generic import CreateView, ListView
 from django.urls import  reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
@@ -24,7 +24,17 @@ class new_order_follower(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 #class based view for order history
+class order_history(LoginRequiredMixin, ListView):
+    model = order_follower
+    template_name = 'users/history2.html'
 
+    def get_ordering(self):
+        ordering = self.request.GET.get('ordering', '-date')
+        # validate ordering here
+        return ordering
+
+    def get_queryset(self):
+        return order_follower.objects.filter(username=self.request.user)
 
 # Function to render order.html with the order form to make new orders
 @login_required
