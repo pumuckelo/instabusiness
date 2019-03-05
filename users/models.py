@@ -36,6 +36,9 @@ class order_follower(models.Model):
 
     class Meta:
         ordering = ["-date"]
+        permissions = (
+            ("editorders", "Can edit and see all orders with status etc."),
+        )
 
 
 #Extending User model and add some variables

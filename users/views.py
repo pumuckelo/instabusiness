@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.views.generic import CreateView, ListView
 from django.urls import  reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 # Create your views here.
 #Function for index.html
 def index(request):
@@ -28,10 +28,7 @@ class order_history(LoginRequiredMixin, ListView):
     model = order_follower
     template_name = 'users/history2.html'
 
-    def get_ordering(self):
-        ordering = self.request.GET.get('ordering', '-date')
-        # validate ordering here
-        return ordering
+
 
     def get_queryset(self):
         return order_follower.objects.filter(username=self.request.user)
@@ -69,14 +66,6 @@ def login(request):
 def profile(request):
     return render(request, 'users/profile.html')
 
-# Function to render the orderhistory.hthml, which will show all orders filtered by username
-@login_required
-def orderhistory(request):
-    context = {
-        'orders': order_follower.objects.all()
-    }
-    return render(request, 'users/orderhistory.html', context)
-
 # Function to render about.html
 def about(request):
     return render(request, 'users/about.html')
@@ -84,3 +73,25 @@ def about(request):
 # Function to render contact.html
 def contact(request):
     return render(request, 'users/contact.html')
+
+class admin_panel(LoginRequiredMixin, PermissionRequiredMixin, ListView):
+    model = order_follower
+    template_name = 'users/history2.html'
+    permission_required = 'order_follower.editorders'
+
+    def get_queryset(self):
+        return order_follower.objects.all()
+
+
+
+
+
+
+
+#@login_required
+#def orderhistory(request):
+# Function to render the orderhistory.hthml, which will show all orders filtered by username
+ #   context = {
+  #      'orders': order_follower.objects.all()
+   # }
+    #return render(request, 'users/orderhistory.html', context)

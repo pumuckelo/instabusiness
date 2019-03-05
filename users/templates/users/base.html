@@ -43,7 +43,7 @@
                     <a class="nav-item nav-link" href="{% url 'about' %}">Über uns</a>
                 </div>
                 <div class="navbar-nav ml-auto">
-                    <a class="nav-item nav-link" href="{% url 'profile' %}">Profil</a>
+                    <a class="nav-item nav-link" href="{% url 'profile' %}">{{ user.username }}</a>
                     <a class="nav-item nav-link" href="{% url 'logout' %}">Ausloggen</a>
                 </div>
             {% else %}
