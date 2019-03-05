@@ -8,6 +8,9 @@ from django.contrib.auth.models import User
 from django.views.generic import CreateView, ListView
 from django.urls import  reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.core.mail import send_mail
+from django.conf import settings
+
 # Create your views here.
 #Function for index.html
 def index(request):
@@ -19,9 +22,33 @@ class new_order_follower(LoginRequiredMixin, CreateView):
     template_name = 'users/order.html'
     fields = ['profile_link','follower','discount','infos']
     success_url = reverse_lazy('orderhistory')
+    from_email = settings.EMAIL_HOST_USER
+
+    #subject ='Neue Bestellung'
+    #from_email = settings.EMAIL_HOST_USER
+    #email_message = fields
+    #send_mail(
+    #subject, email_message, from_email, ['abdoufacebook61@gmail.com'], fail_silently=False
+    #)
     def form_valid(self, form):
+
         form.instance.username = self.request.user
+        user = form.instance.username
+        from_email = settings.EMAIL_HOST_USER
+        profile_link = form.instance.profile_link
+        follower = form.instance.follower
+
+        #Method to send Email to myself with order details
+        message = f"Eine Bestellung von {user}, Link: {profile_link}, Follower: {follower}"
+        send_mail(
+        'Neue Bestellung',
+        message,
+        from_email,
+        ['abdoufacebook61@gmail.com'],
+        fail_silently=False,
+        )
         return super().form_valid(form)
+
 
 #class based view for order history
 class order_history(LoginRequiredMixin, ListView):
