@@ -27,7 +27,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['10.0.0.12', 'localhost', '127.0.0.1']
 
-
+#SMTP EMAIL
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'selinawinder@gmail.com'
+EMAIL_HOST_PASSWORD = '83H7x59M"'
 # Application definition
 
 INSTALLED_APPS = [
