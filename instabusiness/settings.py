@@ -31,8 +31,8 @@ ALLOWED_HOSTS = ['10.0.0.12', 'localhost', '127.0.0.1']
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'selinawinder@gmail.com'
-EMAIL_HOST_PASSWORD = '83H7x59M"'
+EMAIL_HOST_USER = 'Put in your email password, stop stealing my credentials'
+EMAIL_HOST_PASSWORD = 'Put in your own password, stop stealing my credentials'
 # Application definition
 
 INSTALLED_APPS = [
